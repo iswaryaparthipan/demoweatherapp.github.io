@@ -1,0 +1,75 @@
+<div class="container bg-img">
+    <h2 style="color: cornflowerblue;width: 100%;" class="text-center">Weather Application</h2>
+    <div class="card-columns">
+        <div class="row">
+            <div class="col-md-12" *ngFor="let each of data;let i=index">
+                <div class="card" *ngIf="data[i].editFlag == false">
+                    <div class="card-body text-center bg-grid" style="height: 183px">
+                        <h5 class="card-title">Get Weather</h5>
+                        <div class="card-text">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col col-8">
+                                        <input type="text" class="form-control border" [(ngModel)]='data[i].city'>
+                                    </div>
+                                    <div class="col col-4">
+                                        <button type="button" (click)="getWeather(data[i].city,i)"
+                                            class="btn btn-primary border btn-sm"
+                                            *ngIf="data[i].editFlag == false">Click</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" *ngIf="data[i].editFlag == undefined" (click)="hideCard(i)">
+                    <div class="card-body text-center bg-grid" style="height: 183px">
+                        <p>Click card and enter city.</p>
+                    </div>
+                </div>
+                <div class="card bg-grid" *ngIf="data[i].editFlag == true">
+                    <div class="card-body text-center bg-grid"
+                        [ngStyle]="{ 'background-image': 'url(./assets/'+data[i].weatherDate.weather[0].main+'.jpg)'}"
+                        style="height: 183px">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h6>&nbsp;{{data[i].weatherDate.weather[0].main}}</h6>
+                                <h6>&nbsp;Today,{{data[i].weatherDate.name}}</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" (click)="reset(i)" class="btn btn-primary border btn-sm"
+                                    *ngIf="data[i].editFlag == true">Edit</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="./assets/humidity.png" style="width:25px">
+                                        </div>
+                                        <div class="col-md-6" pull-left>
+                                            {{data[i].weatherDate.main.humidity}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="./assets/temp.png" style="width:25px">
+                                        </div>
+                                        <div class="col-md-6" pull-left>
+                                            {{data[i].weatherDate.main.temp-273.15  | number : '2.0-0'}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

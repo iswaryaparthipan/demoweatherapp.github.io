@@ -1,0 +1,27 @@
+
+ou can add global styles to this file, and also import other style files */
+
+.bg-img{
+    background-image: url('/../assets/back.jpg');
+    background-repeat: no-repeat;
+    background-size:100%;
+}
+.bg-grid{
+    background-image: url('/../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size:100%;
+}
+.bg-sun{
+    background-image: url('/../assets/suuny.jpg');
+}
+.bg-cloud{
+    background-image: url('/../assets/cloud.jpg');
+}
+.bg-moon{
+    background-image: url('/../assets/moon.jpg');
+}
+.weatherWidgetRow{
+    display:block;
+    margin:0 auto;
+    width: fit-content;
+}
